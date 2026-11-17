@@ -132,3 +132,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offs
 @keyframes date-collect { 0% { transform: translate(0, 0); } 65% { transform: translate(var(--date-offset), calc(19cqw + var(--date-depth))) rotate(140deg); } 82% { transform: translate(var(--date-offset), calc(17cqw + var(--date-depth))) rotate(170deg); } 100% { transform: translate(var(--date-offset), calc(19cqw + var(--date-depth))) rotate(190deg); } }
 @keyframes palm-sway { 0%, 100% { transform: rotate(0); } 25%, 65% { transform: rotate(2deg); } 45%, 85% { transform: rotate(-2deg); } }
 @media (prefers-reduced-motion: reduce) { .country .palm-layer { animation: none !important; } .fallen-date { animation: none; transform: translate(var(--date-offset), calc(19cqw + var(--date-depth))) rotate(190deg); } }
+.falcon-flight { position: absolute; z-index: 1; left: 12%; top: 25%; width: clamp(18px, 2.2%, 32px); color: #635c50; opacity: .7; pointer-events: none; animation: falcon-glide 32s ease-in-out infinite alternate; }
+.falcon { display: block; width: 100%; height: auto; overflow: visible; }
+.falcon-wing { transform-origin: 23px 11px; animation: falcon-wings 3.5s ease-in-out infinite; }
+.falcon-wing-front { animation-delay: -.15s; }
+@keyframes falcon-glide { 0% { left: 12%; top: 25%; transform: rotate(-4deg); } 35% { top: 19%; transform: rotate(3deg); } 70% { top: 24%; transform: rotate(-2deg); } 100% { left: 83%; top: 16%; transform: rotate(3deg); } }
+@keyframes falcon-wings { 0%, 65%, 100% { transform: scaleY(1); } 72%, 88% { transform: scaleY(.45); } 80%, 96% { transform: scaleY(1.15); } }
+@media (prefers-reduced-motion: reduce) { .falcon-flight, .falcon-wing { animation: none; } }
+.falcon-flight { animation: falcon-circuit 64s ease-in-out infinite; }
+@keyframes falcon-circuit { 0% { left: 12%; top: 25%; transform: rotate(-4deg) scaleX(1); } 25% { top: 19%; transform: rotate(3deg) scaleX(1); } 49% { left: 83%; top: 16%; transform: rotate(3deg) scaleX(1); } 50% { left: 83%; top: 16%; transform: rotate(-3deg) scaleX(-1); } 75% { top: 23%; transform: rotate(2deg) scaleX(-1); } 99% { left: 12%; top: 25%; transform: rotate(-3deg) scaleX(-1); } 100% { left: 12%; top: 25%; transform: rotate(-4deg) scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .falcon-flight { animation: none; } }
+/* The social SVG artwork has built-in padding, so enlarge its canvas to match the stack artwork. */
+.social-link svg { width: 22px; height: 22px; }

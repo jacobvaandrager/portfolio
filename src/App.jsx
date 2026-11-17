@@ -96,6 +96,13 @@ function App() {
     <footer className={`desert-footer ${footerVisible ? 'is-visible' : ''}`} aria-label="A miniature desert landscape with a green Defender driving along a road">
       <div className="desert-stage" aria-hidden="true">
         <img className="desert-background" src="/assets/desert-landscape.png" alt="" />
+        <span className="falcon-flight" aria-hidden="true">
+          <svg className="falcon" viewBox="0 0 48 20" fill="none">
+            <path className="falcon-wing falcon-wing-back" d="M23 10C18 8 13 3 4 2c4 3 7 7 12 9l6 2" fill="currentColor" />
+            <path d="M21 10c4-2 9-1 12 1l7 1-4 2-5-1c-3 2-7 2-10 0l-5 1 3-3z" fill="currentColor" />
+            <path className="falcon-wing falcon-wing-front" d="M23 10C18 10 12 12 6 17c8-2 13-2 18-4" fill="currentColor" />
+          </svg>
+        </span>
         <svg className="road-sand" viewBox="0 0 1000 333" preserveAspectRatio="none" aria-hidden="true">
           <defs><linearGradient id="road-sand-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#eac08e" stopOpacity=".8" /><stop offset="1" stopColor="#ad835f" stopOpacity=".5" /></linearGradient></defs>
           <path fill="url(#road-sand-shade)" d="M 115 279 C 121 277, 132 278, 138 280 C 143 281, 149 280, 153 282 C 147 284, 139 283, 132 284 C 125 284, 117 283, 112 282 Z" />
