@@ -144,3 +144,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offs
 @media (prefers-reduced-motion: reduce) { .falcon-flight { animation: none; } }
 /* The social SVG artwork has built-in padding, so enlarge its canvas to match the stack artwork. */
 .social-link svg { width: 22px; height: 22px; }
+@keyframes falcon-circuit {
+  0% { left: 85%; top: 18%; transform: rotate(5deg) scaleX(-1); }
+  14% { left: 67%; top: 27%; transform: rotate(14deg) scaleX(-1); }
+  26% { left: 48%; top: 40%; transform: rotate(2deg) scaleX(-1); }
+  39% { left: 28%; top: 25%; transform: rotate(-13deg) scaleX(-1); }
+  49% { left: 12%; top: 19%; transform: rotate(-2deg) scaleX(-1); }
+  50% { left: 12%; top: 19%; transform: rotate(2deg) scaleX(1); }
+  65% { left: 31%; top: 30%; transform: rotate(12deg) scaleX(1); }
+  76% { left: 50%; top: 37%; transform: rotate(0) scaleX(1); }
+  90% { left: 70%; top: 22%; transform: rotate(-10deg) scaleX(1); }
+  99% { left: 85%; top: 18%; transform: rotate(-2deg) scaleX(1); }
+  100% { left: 85%; top: 18%; transform: rotate(5deg) scaleX(-1); }
+}
