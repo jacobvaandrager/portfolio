@@ -87,7 +87,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offs
 @media (prefers-reduced-motion: reduce) { .driving-car { animation: none; left: 22%; } .defender { animation: none; } .exhaust, .dust { display: none; } }
 
 .stack { margin-top: 30px; }
-.stack h2 { margin: 0 0 10px; color: #999; font-size: 13px; line-height: 1.4; font-weight: 500; }
+.stack h2 { margin: 0 0 10px; color: #999; font-size: 15px; line-height: 1.4; font-weight: 500; }
 .stack-items { display: flex; flex-wrap: wrap; gap: 5px; }
 .stack-item { position: relative; display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border: 1px solid #f0f0f0; border-radius: 50%; background: #fff; box-shadow: 0 1px 5px #0000000d; cursor: default; }
 .stack-item img { width: 19px; height: 19px; object-fit: contain; }
