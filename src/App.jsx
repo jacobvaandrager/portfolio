@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { portfolio } from './config'
 
 function CompanyLink({ company }) {
@@ -41,6 +41,19 @@ function BabyIcon() {
 }
 
 function App() {
+  const [selectedCountry, setSelectedCountry] = useState(null)
+  const [footerVisible, setFooterVisible] = useState(false)
+  const revealRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setFooterVisible(true)
+    }, { threshold: 0.05 })
+    if (revealRef.current) observer.observe(revealRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  const toggleCountry = (index) => setSelectedCountry((current) => current === index ? null : index)
   return (
     <>
     <div className="page-shell">
@@ -61,7 +74,7 @@ function App() {
       </section>
       <section className="landscapes" aria-label="Places I've lived">
         {portfolio.countries.map((country, index) => (
-          <div key={country.name} className="country" tabIndex="0" aria-label={`${country.name}, ${country.years}`}>
+          <div key={country.name} className={`country ${selectedCountry === index ? 'selected' : ''}`} tabIndex="0" role="button" aria-pressed={selectedCountry === index} aria-label={`${country.name}, ${country.years}`} onPointerUp={(event) => { if (event.pointerType !== 'mouse') toggleCountry(index) }} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleCountry(index) } }}>
             <span className="scene"><img className={country.position} src={portfolio.landscapes} alt="" /></span>
             <span className="country-label" aria-hidden="true"><span className="country-name">{country.name}</span><span className="years">{index === 0 && <BabyIcon />}{country.years}</span></span>
           </div>
@@ -69,17 +82,22 @@ function App() {
       </section>
         <div className="socials"><SocialLink href={portfolio.linkedin} label="LinkedIn" type="linkedin" /><SocialLink href={portfolio.cv} label="Download CV" type="cv" /></div>
     </main>
+    <span className="footer-reveal-marker" ref={revealRef} aria-hidden="true" />
     </div>
-    <footer className="desert-footer" aria-label="A miniature desert landscape with a green Defender driving along a road">
+    <footer className={`desert-footer ${footerVisible ? 'is-visible' : ''}`} aria-label="A miniature desert landscape with a green Defender driving along a road">
       <div className="desert-stage" aria-hidden="true">
         <img className="desert-background" src="/assets/desert-landscape.png" alt="" />
+        <svg className="road-sand" viewBox="0 0 1000 333" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="road-sand-shade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#eac08e" stopOpacity=".8" /><stop offset="1" stopColor="#ad835f" stopOpacity=".5" /></linearGradient></defs>
+          <path fill="url(#road-sand-shade)" d="M 115 279 C 121 277, 132 278, 138 280 C 143 281, 149 280, 153 282 C 147 284, 139 283, 132 284 C 125 284, 117 283, 112 282 Z" />
+        </svg>
         <div className="driving-car">
           <span className="exhaust" ><i /><i /><i /></span>
           <span className="dust"><i /><i /><i /></span>
-          <img className="defender" src="/assets/defender.png" alt="" />
+          <img className="defender" src="/assets/defender.webp" alt="" />
         </div>
         <svg className="foreground-dune" viewBox="0 0 1000 333" preserveAspectRatio="none" aria-hidden="true">
-          <defs><linearGradient id="sand-blend" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop offset="0" stopColor="#f4bd80" /><stop offset=".45" stopColor="#f7bc80" /><stop offset="1" stopColor="#f7b97d" stopOpacity="0" /></linearGradient></defs>
+          <defs><linearGradient id="sand-blend" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop offset="0" stopColor="#f5c38c" /><stop offset=".3" stopColor="#efb879" /><stop offset=".68" stopColor="#f7bd82" /><stop offset="1" stopColor="#f7b97d" stopOpacity="0" /></linearGradient></defs>
           <path fill="url(#sand-blend)" d="M 220 333 C 275 328, 320 303, 365 291 C 406 280, 430 269, 470 260 C 505 250, 529 254, 560 265 C 605 281, 632 303, 686 314 C 722 321, 760 328, 800 333 Z" />
         </svg>
       </div>
