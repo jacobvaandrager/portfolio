@@ -14,7 +14,7 @@ export const portfolio = {
     { name: 'Codex', icon: '/assets/stack/openai.svg', color: '#171717' },
     { name: 'Swift', icon: '/assets/stack/swift.svg', color: '#f05138' },
     { name: 'Unity3D', icon: '/assets/stack/unity.svg', color: '#171717' },
-    { name: 'Final Cut Pro', icon: '/assets/stack/final-cut.svg', color: '#171717' },
+    { name: 'Final Cut Pro', icon: '/assets/stack/final-cut.png', color: '#171717' },
   ],
   landscapes: '/assets/country-dioramas.png',
   countries: [

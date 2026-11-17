@@ -58,7 +58,6 @@ function App() {
             {portfolio.stack.map((item) => <span key={item.name} className="stack-item" tabIndex="0" aria-label={item.name} style={{ color: item.color }}><span className="stack-tooltip" aria-hidden="true">{item.name}</span><img src={item.icon} alt="" /></span>)}
           </div>
         </section>
-        <div className="socials"><SocialLink href={portfolio.linkedin} label="LinkedIn" type="linkedin" /><SocialLink href={portfolio.cv} label="Download CV" type="cv" /></div>
       </section>
       <section className="landscapes" aria-label="Places I've lived">
         {portfolio.countries.map((country, index) => (
@@ -68,6 +67,7 @@ function App() {
           </div>
         ))}
       </section>
+        <div className="socials"><SocialLink href={portfolio.linkedin} label="LinkedIn" type="linkedin" /><SocialLink href={portfolio.cv} label="Download CV" type="cv" /></div>
     </main>
     </div>
     <footer className="desert-footer" aria-label="A miniature desert landscape with a green Defender driving along a road">

@@ -100,3 +100,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offs
 .foreground-dune { inset: 0; width: 100%; height: 100%; filter: none; }
 
 .country:focus-visible { outline: 2px solid #595959; outline-offset: 4px; border-radius: 3px; }
+/* Leave room for the country details and their hover labels above the social links. */
+.socials { margin-top: 34px; }
+.stack-item { border: 0; border-radius: 7px; background: transparent; box-shadow: none; transition: background-color 200ms ease; }
+.stack-item:hover, .stack-item:focus-visible { background: #f1f1f1; }
+.stack-item img { width: 17px; height: 17px; }
