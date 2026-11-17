@@ -35,3 +35,26 @@ a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offs
 @media (hover: none) { .country:hover:not(.selected):not(:focus-visible) .scene { filter: grayscale(1); transform: none; } .country:hover:not(.selected):not(:focus-visible) .years { opacity: 0; } .preview { display: none; } }
 @media (max-width: 520px) { .page { width: calc(100% - 40px); padding-top: 64px; } h1 { font-size: 30px; } .intro { margin-top: 36px; } .landscapes { margin-top: 70px; padding: 16px 6px 18px; } .country-name, .years { font-size: 12px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
+
+/* Keep company names on the same text baseline as the surrounding sentence. */
+.intro { font-weight: 500; }
+.company-link { display: inline; }
+.company-logo { vertical-align: -2px; margin-right: 4px; }
+.socials { gap: 8px; }
+.social-link { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 7px; text-decoration: none; transition: background-color 200ms ease; }
+.social-link svg { width: 17px; height: 17px; }
+.social-link:hover, .social-link:focus-visible { background: #f1f1f1; }
+.social-tooltip { position: absolute; bottom: calc(100% + 8px); left: 50%; padding: 7px 10px; border-radius: 7px; background: #f1f1f1; font-size: 13px; font-weight: 400; line-height: 1; white-space: nowrap; opacity: 0; visibility: hidden; transform: translate(-50%, 5px); transition: opacity 200ms ease, transform 200ms ease, visibility 200ms; }
+.social-tooltip::after { content: ''; position: absolute; top: 100%; left: 50%; border: 5px solid transparent; border-top-color: #f1f1f1; transform: translateX(-50%); }
+.social-link:hover .social-tooltip, .social-link:focus-visible .social-tooltip { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.landscapes { padding: 0; border: 0; border-radius: 0; background: transparent; }
+.country { position: relative; }
+.scene { width: 80%; margin: 0 auto; }
+.scene img { mix-blend-mode: normal; }
+.country-label { position: absolute; top: 100%; left: 50%; width: max-content; color: #151515; opacity: 0; visibility: hidden; transform: translate(-50%, 5px); transition: opacity 200ms ease, transform 200ms ease, visibility 200ms; }
+.country-name { font-weight: 500; }
+.years { display: flex; justify-content: center; align-items: center; gap: 3px; opacity: 1; }
+.baby-icon { width: 14px; height: 14px; }
+.country:hover .country-label, .country:focus-visible .country-label, .country.selected .country-label { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+@media (hover: none) { .country:hover:not(.selected):not(:focus-visible) .country-label { opacity: 0; visibility: hidden; transform: translate(-50%, 5px); } }
+@media (max-width: 520px) { .landscapes { padding: 0; } }

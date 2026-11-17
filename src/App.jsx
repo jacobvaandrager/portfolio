@@ -23,8 +23,21 @@ function CompanyLink({ company }) {
   )
 }
 
-function OptionalLink({ href, children }) {
-  return href ? <a href={href} target="_blank" rel="noreferrer">{children}</a> : <span className="unavailable" title="Link coming soon">{children}</span>
+function SocialLink({ href, label, type }) {
+  return (
+    <a className="social-link" href={href} target="_blank" rel="noreferrer" aria-label={label}>
+      <span className="social-tooltip" aria-hidden="true">{label}</span>
+      {type === 'linkedin' ? (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M7.5 10v7M7.5 7h.01M11 17v-7m0 3a3 3 0 0 1 6 0v4" /></svg>
+      ) : (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v5h4M12 11v6m-2.5-2.5L12 17l2.5-2.5" /></svg>
+      )}
+    </a>
+  )
+}
+
+function BabyIcon() {
+  return <svg className="baby-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="7.5" /><path d="M12 5.5c-1-2 1-3.5 2.5-2M9 12h.01M15 12h.01M9.5 15.5c1.4 1.3 3.6 1.3 5 0" /></svg>
 }
 
 function App() {
@@ -38,14 +51,13 @@ function App() {
       <section className="intro" aria-label="Introduction">
         <p>I'm based in the Netherlands, currently working on building <CompanyLink company={portfolio.companies.juice} />, designing and building hardware interfaces that get used by thousands of people daily.</p>
         <p>Previously, I interned at <CompanyLink company={portfolio.companies.google} /> in Dublin and completed a research project for the AdMob team.</p>
-        <div className="socials"><OptionalLink href={portfolio.linkedin}>LinkedIn <span aria-hidden="true">↗</span></OptionalLink><OptionalLink href={portfolio.cv}>CV <span aria-hidden="true">↓</span></OptionalLink></div>
+        <div className="socials"><SocialLink href={portfolio.linkedin} label="LinkedIn" type="linkedin" /><SocialLink href={portfolio.cv} label="Download CV" type="cv" /></div>
       </section>
       <section className="landscapes" aria-label="Places I've lived">
         {portfolio.countries.map((country, index) => (
-          <button key={country.name} className={`country ${selected === index ? 'selected' : ''}`} onClick={() => setSelected(selected === index ? null : index)} aria-pressed={selected === index}>
+          <button key={country.name} className={`country ${selected === index ? 'selected' : ''}`} onClick={() => setSelected(selected === index ? null : index)} aria-pressed={selected === index} aria-label={`${country.name}, ${country.years}`}>
             <span className="scene"><img className={country.position} src={portfolio.landscapes} alt="" /></span>
-            <span className="country-name">{country.name}</span>
-            <span className="years">{country.years}</span>
+            <span className="country-label" aria-hidden="true"><span className="country-name">{country.name}</span><span className="years">{index === 0 && <BabyIcon />}{country.years}</span></span>
           </button>
         ))}
       </section>
