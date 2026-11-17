@@ -1,4 +1,37 @@
-html, body, #root {
-  min-height: 100%;
-  margin: 0;
-}
+:root { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #151515; background: #fff; font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.page { width: min(640px, calc(100% - 48px)); margin: 0 auto; padding: 96px 0 100px; }
+h1, p { margin: 0; }
+h1 { font-size: 32px; line-height: 1.12; letter-spacing: -1.25px; font-weight: 600; }
+.title { margin-top: 8px; color: #999; font-size: 15px; line-height: 1.4; }
+.intro { margin-top: 42px; font-size: 15px; line-height: 1.7; }
+.intro p + p { margin-top: 14px; }
+a { color: inherit; text-decoration-color: #bcbcbc; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: currentColor; }
+a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offset: 4px; border-radius: 3px; }
+.company { display: inline-block; position: relative; white-space: nowrap; }
+.company-link { display: inline-flex; align-items: center; gap: 4px; }
+.company-logo { display: inline-block; width: 15px; height: 15px; object-fit: contain; border-radius: 3px; }
+.preview { position: absolute; z-index: 5; left: calc(50% + var(--preview-offset)); bottom: calc(100% + 12px); width: 260px; height: 170px; overflow: visible; border: 1px solid #dcdcdc; border-radius: 10px; background: #fff; box-shadow: 0 10px 26px #0002; opacity: 0; visibility: hidden; transform: translate(-50%, 5px); transition: opacity 200ms ease, transform 200ms ease, visibility 200ms; }
+.preview::after { content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 14px; }
+.preview-toolbar { height: 22px; display: flex; align-items: center; gap: 4px; padding: 0 8px; background: #f7f7f7; border-radius: 9px 9px 0 0; }
+.preview-toolbar i { width: 6px; height: 6px; border-radius: 50%; background: #ff6259; }
+.preview-toolbar i:nth-child(2) { background: #ffbd2e; }.preview-toolbar i:nth-child(3) { background: #28c840; }
+.preview-toolbar span { height: 8px; flex: 1; margin-left: 4px; border-radius: 8px; background: #e4e4e4; }
+.preview > img { display: block; width: 100%; height: 147px; object-fit: cover; object-position: center; border-radius: 0 0 9px 9px; }
+.company:hover .preview, .company:focus-within .preview { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.socials { display: flex; gap: 24px; margin-top: 26px; font-size: 14px; }
+.unavailable { color: #999; cursor: default; }
+.landscapes { display: grid; grid-template-columns: 1fr 1fr; margin-top: 84px; padding: 24px 14px 21px; border: 1px solid #efeeec; border-radius: 16px; background: #f7f6f5; }
+.country { appearance: none; min-width: 0; padding: 0 0 4px; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; text-align: center; }
+.scene { position: relative; display: block; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; filter: grayscale(1); transition: filter 300ms ease, transform 300ms ease; }
+.scene img { position: absolute; top: 0; width: 200%; height: 100%; max-width: none; object-fit: fill; mix-blend-mode: multiply; }
+.scene img.left { left: 0; }.scene img.right { right: 0; }
+.country-name, .years { display: block; font-size: 13px; line-height: 1.4; }
+.country-name { font-weight: 550; }.years { margin-top: 4px; color: #999; opacity: 0; transition: opacity 300ms ease; }
+.country:hover .scene, .country:focus-visible .scene, .country.selected .scene { filter: grayscale(0) drop-shadow(0 5px 5px #0002); transform: translateY(-4px) scale(1.04); }
+.country:hover .years, .country:focus-visible .years, .country.selected .years { opacity: 1; }
+@media (hover: none) { .country:hover:not(.selected):not(:focus-visible) .scene { filter: grayscale(1); transform: none; } .country:hover:not(.selected):not(:focus-visible) .years { opacity: 0; } .preview { display: none; } }
+@media (max-width: 520px) { .page { width: calc(100% - 40px); padding-top: 64px; } h1 { font-size: 30px; } .intro { margin-top: 36px; } .landscapes { margin-top: 70px; padding: 16px 6px 18px; } .country-name, .years { font-size: 12px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
