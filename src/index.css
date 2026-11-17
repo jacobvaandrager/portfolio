@@ -114,3 +114,21 @@ a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offs
 .desert-footer { height: min(clamp(250px, 33.333vw, 600px), max(0px, calc(100svh - 84px))); }
 /* Extend the landscape behind the page's rounded lower corners. */
 .desert-footer { margin-top: -32px; }
+.scene { container-type: inline-size; }
+.falling-date { position: absolute; z-index: 1; left: 27.4%; top: 39%; width: 1.8%; height: 2.5%; border-radius: 50%; background: #824719; box-shadow: inset 1px 1px 1px #c4894b; opacity: 0; }
+.windmill-rotor { position: absolute; z-index: 1; left: 38.7%; top: 35.8%; width: 43%; aspect-ratio: 1; transform: translate(-50%, -50%); }
+.scene .windmill-rotor img { position: static; display: block; width: 100%; height: 100%; object-fit: contain; transform-origin: center; }
+.country:hover .falling-date, .country:focus-visible .falling-date, .country.selected .falling-date { animation: date-fall 1.6s ease-in forwards; }
+.country:hover .windmill-rotor img, .country:focus-visible .windmill-rotor img, .country.selected .windmill-rotor img { animation: windmill-spin 4s linear infinite; }
+@keyframes date-fall { 0%, 15% { opacity: 1; transform: translateY(0); } 65% { opacity: 1; transform: translate(3cqw, 19cqw) rotate(140deg); } 80% { opacity: 1; transform: translate(3.5cqw, 17cqw) rotate(170deg); } 100% { opacity: 1; transform: translate(4cqw, 19cqw) rotate(190deg); } }
+@keyframes windmill-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .country:hover .falling-date, .country:focus-visible .falling-date, .country.selected .falling-date, .country:hover .windmill-rotor img, .country:focus-visible .windmill-rotor img, .country.selected .windmill-rotor img { animation: none; } }
+.scene img.palm-layer { left: 0; top: 0; width: 200%; height: 100%; clip-path: polygon(5.5% 22%, 21% 22%, 21% 44%, 15.7% 44%, 15.7% 63%, 12.6% 63%, 12.6% 44%, 5.5% 44%); transform-origin: 14% 63%; }
+.country:hover .palm-layer, .country:focus-visible .palm-layer, .country.selected .palm-layer { animation: palm-sway 650ms ease-in-out; }
+.date-cluster { position: absolute; z-index: 1; top: 41%; left: 28%; width: 4%; height: 3%; }
+.date-cluster i { position: absolute; width: 32%; height: 45%; border-radius: 50%; background: #8e4d20; box-shadow: inset 1px 1px #cb8b49; }
+.date-cluster i:nth-child(2) { left: 30%; top: 8%; }.date-cluster i:nth-child(3) { left: 16%; top: 42%; }.date-cluster i:nth-child(4) { left: 48%; top: 38%; }
+.fallen-date { position: absolute; z-index: 2; left: 28%; top: 41%; width: 1.8%; height: 2.5%; border-radius: 50%; background: #824719; box-shadow: inset 1px 1px 1px #c4894b; animation: date-collect 1.15s ease-in forwards; }
+@keyframes date-collect { 0% { transform: translate(0, 0); } 65% { transform: translate(var(--date-offset), calc(19cqw + var(--date-depth))) rotate(140deg); } 82% { transform: translate(var(--date-offset), calc(17cqw + var(--date-depth))) rotate(170deg); } 100% { transform: translate(var(--date-offset), calc(19cqw + var(--date-depth))) rotate(190deg); } }
+@keyframes palm-sway { 0%, 100% { transform: rotate(0); } 25%, 65% { transform: rotate(2deg); } 45%, 85% { transform: rotate(-2deg); } }
+@media (prefers-reduced-motion: reduce) { .country .palm-layer { animation: none !important; } .fallen-date { animation: none; transform: translate(var(--date-offset), calc(19cqw + var(--date-depth))) rotate(190deg); } }

@@ -42,6 +42,8 @@ function BabyIcon() {
 
 function App() {
   const [selectedCountry, setSelectedCountry] = useState(null)
+  const [dateCount, setDateCount] = useState(0)
+  const dropDate = () => setDateCount((count) => Math.min(count + 1, 6))
   const [footerVisible, setFooterVisible] = useState(false)
   const revealRef = useRef(null)
 
@@ -74,8 +76,15 @@ function App() {
       </section>
       <section className="landscapes" aria-label="Places I've lived">
         {portfolio.countries.map((country, index) => (
-          <div key={country.name} className={`country ${selectedCountry === index ? 'selected' : ''}`} tabIndex="0" role="button" aria-pressed={selectedCountry === index} aria-label={`${country.name}, ${country.years}`} onPointerUp={(event) => { if (event.pointerType !== 'mouse') toggleCountry(index) }} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleCountry(index) } }}>
-            <span className="scene"><img className={country.position} src={portfolio.landscapes} alt="" /></span>
+          <div key={country.name} className={`country ${selectedCountry === index ? 'selected' : ''}`} tabIndex="0" role="button" aria-pressed={selectedCountry === index} aria-label={`${country.name}, ${country.years}`} onMouseEnter={() => { if (index === 0 && window.matchMedia('(hover: hover)').matches) dropDate() }} onFocus={(event) => { if (index === 0 && event.currentTarget.matches(':focus-visible')) dropDate() }} onPointerUp={(event) => { if (event.pointerType !== 'mouse') { if (index === 0 && selectedCountry !== index) dropDate(); toggleCountry(index) } }} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleCountry(index) } }}>
+            <span className="scene">
+              <img className={country.position} src={index === 1 ? '/assets/country-dioramas-no-blades.png' : '/assets/country-dioramas-no-palm.png'} alt="" />
+              {index === 0 ? <>
+                <img className="palm-layer" src={portfolio.landscapes} alt="" />
+                <span className="date-cluster" aria-hidden="true"><i /><i /><i /><i /></span>
+                {Array.from({ length: dateCount }, (_, dateIndex) => <span key={dateIndex} className="fallen-date" aria-hidden="true" style={{ '--date-offset': `${dateIndex * 1.6 - 3}cqw`, '--date-depth': `${(dateIndex % 2) * 1.1}cqw` }} />)}
+              </> : <span className="windmill-rotor" aria-hidden="true"><img src="/assets/windmill-blades.png" alt="" /></span>}
+            </span>
             <span className="country-label" aria-hidden="true"><span className="country-name">{country.name}</span><span className="years">{index === 0 && <BabyIcon />}{country.years}</span></span>
           </div>
         ))}
