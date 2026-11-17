@@ -3,7 +3,7 @@
 body { margin: 0; }
 .page { width: min(640px, calc(100% - 48px)); margin: 0 auto; padding: 96px 0 100px; }
 h1, p { margin: 0; }
-h1 { font-size: 32px; line-height: 1.12; letter-spacing: -1.25px; font-weight: 600; }
+h1 { font-size: 32px; line-height: 1.12; letter-spacing: -1.25px; font-weight: 700; }
 .title { margin-top: 8px; color: #999; font-size: 15px; line-height: 1.4; }
 .intro { margin-top: 42px; font-size: 15px; line-height: 1.7; }
 .intro p + p { margin-top: 14px; }
