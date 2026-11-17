@@ -3,7 +3,7 @@
 body { margin: 0; }
 .page { width: min(640px, calc(100% - 48px)); margin: 0 auto; padding: 96px 0 100px; }
 h1, p { margin: 0; }
-h1 { font-size: 32px; line-height: 1.12; letter-spacing: -1.25px; font-weight: 700; }
+h1 { font-size: 32px; line-height: 1.12; letter-spacing: -1.25px; font-weight: 600; }
 .title { margin-top: 8px; color: #999; font-size: 15px; line-height: 1.4; }
 .intro { margin-top: 42px; font-size: 15px; line-height: 1.7; }
 .intro p + p { margin-top: 14px; }
@@ -134,3 +134,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offs
 @media (prefers-reduced-motion: reduce) { .country .palm-layer { animation: none !important; } .fallen-date { animation: none; transform: translate(var(--date-offset), calc(19cqw + var(--date-depth))) rotate(190deg); } }
 /* The social SVG artwork has built-in padding, so enlarge its canvas to match the stack artwork. */
 .social-link svg { width: 22px; height: 22px; }
+
+.stack-item img { filter: grayscale(1); transition: filter 200ms ease; }
+.stack-item:hover img, .stack-item:focus-visible img { filter: grayscale(0); }
