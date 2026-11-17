@@ -43,6 +43,7 @@ function BabyIcon() {
 function App() {
   const [selected, setSelected] = useState(null)
   return (
+    <>
     <main className="page">
       <header>
         <h1>{portfolio.name}</h1>
@@ -62,6 +63,14 @@ function App() {
         ))}
       </section>
     </main>
+    <footer className="desert-footer" aria-label="A miniature desert landscape with a green Defender driving along a road">
+      <div className="desert-stage" aria-hidden="true">
+        <img className="desert-background" src="/assets/desert-landscape.png" alt="" />
+        <img className="defender" src="/assets/defender.png" alt="" />
+        <img className="foreground-dune" src="/assets/foreground-dune.png" alt="" />
+      </div>
+    </footer>
+    </>
   )
 }
 export default App

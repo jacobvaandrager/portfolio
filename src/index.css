@@ -58,3 +58,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offs
 .country:hover .country-label, .country:focus-visible .country-label, .country.selected .country-label { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 @media (hover: none) { .country:hover:not(.selected):not(:focus-visible) .country-label { opacity: 0; visibility: hidden; transform: translate(-50%, 5px); } }
 @media (max-width: 520px) { .landscapes { padding: 0; } }
+
+.desert-footer { position: relative; width: 100%; height: clamp(250px, 33.333vw, 600px); overflow: hidden; background: #9bc9e9; }
+.desert-stage { position: absolute; width: max(100%, 750px); height: 100%; left: 50%; transform: translateX(-50%); }
+.desert-background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
+.defender { position: absolute; z-index: 1; bottom: 12.8%; left: -15%; width: 12%; height: auto; animation: drive-across 24s linear infinite; }
+.foreground-dune { position: absolute; z-index: 2; width: 35%; height: 52%; object-fit: fill; left: 38%; bottom: 0; pointer-events: none; }
+@keyframes drive-across { from { left: -15%; } to { left: 103%; } }
+@media (prefers-reduced-motion: reduce) { .defender { animation: none; left: 22%; } }
