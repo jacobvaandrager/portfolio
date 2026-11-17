@@ -41,7 +41,6 @@ function BabyIcon() {
 }
 
 function App() {
-  const [selected, setSelected] = useState(null)
   return (
     <>
     <div className="page-shell">
@@ -63,10 +62,10 @@ function App() {
       </section>
       <section className="landscapes" aria-label="Places I've lived">
         {portfolio.countries.map((country, index) => (
-          <button key={country.name} className={`country ${selected === index ? 'selected' : ''}`} onClick={() => setSelected(selected === index ? null : index)} aria-pressed={selected === index} aria-label={`${country.name}, ${country.years}`}>
+          <div key={country.name} className="country" tabIndex="0" aria-label={`${country.name}, ${country.years}`}>
             <span className="scene"><img className={country.position} src={portfolio.landscapes} alt="" /></span>
             <span className="country-label" aria-hidden="true"><span className="country-name">{country.name}</span><span className="years">{index === 0 && <BabyIcon />}{country.years}</span></span>
-          </button>
+          </div>
         ))}
       </section>
     </main>
