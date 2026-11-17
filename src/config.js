@@ -8,6 +8,14 @@ export const portfolio = {
     juice: { name: 'Juice', url: 'https://getjuice.nl', logo: '/assets/juice-logo.png', preview: '/assets/juice-preview.png' },
     google: { name: 'Google', url: 'https://www.instagram.com/reel/CxYY-p3x_x7/', logo: '/assets/google-logo.ico', preview: '/assets/google-preview.jpg' },
   },
+  stack: [
+    { name: 'Figma', icon: '/assets/stack/figma.svg', color: '#f24e1e' },
+    { name: 'Claude Code', icon: '/assets/stack/claude.svg', color: '#c76e50' },
+    { name: 'Codex', icon: '/assets/stack/openai.svg', color: '#171717' },
+    { name: 'Swift', icon: '/assets/stack/swift.svg', color: '#f05138' },
+    { name: 'Unity3D', icon: '/assets/stack/unity.svg', color: '#171717' },
+    { name: 'Final Cut Pro', icon: '/assets/stack/final-cut.svg', color: '#171717' },
+  ],
   landscapes: '/assets/country-dioramas.png',
   countries: [
     { name: 'Bahrain', years: '2001–2019', position: 'left' },

@@ -53,6 +53,12 @@ function App() {
       <section className="intro" aria-label="Introduction">
         <p>I'm based in the Netherlands, currently working on building <CompanyLink company={portfolio.companies.juice} />, designing and building hardware interfaces that get used by thousands of people daily.</p>
         <p>Previously, I interned at <CompanyLink company={portfolio.companies.google} /> in Dublin and completed a research project for the AdMob team.</p>
+        <section className="stack" aria-label="My Stack">
+          <h2>My Stack</h2>
+          <div className="stack-items">
+            {portfolio.stack.map((item) => <span key={item.name} className="stack-item" tabIndex="0" aria-label={item.name} style={{ color: item.color }}><span className="stack-tooltip" aria-hidden="true">{item.name}</span><img src={item.icon} alt="" /></span>)}
+          </div>
+        </section>
         <div className="socials"><SocialLink href={portfolio.linkedin} label="LinkedIn" type="linkedin" /><SocialLink href={portfolio.cv} label="Download CV" type="cv" /></div>
       </section>
       <section className="landscapes" aria-label="Places I've lived">
@@ -73,7 +79,10 @@ function App() {
           <span className="dust"><i /><i /><i /></span>
           <img className="defender" src="/assets/defender.png" alt="" />
         </div>
-        <img className="foreground-dune" src="/assets/foreground-dune.png" alt="" />
+        <svg className="foreground-dune" viewBox="0 0 1000 333" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="sand-blend" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox"><stop offset="0" stopColor="#f4bd80" /><stop offset=".45" stopColor="#f7bc80" /><stop offset="1" stopColor="#f7b97d" stopOpacity="0" /></linearGradient></defs>
+          <path fill="url(#sand-blend)" d="M 220 333 C 275 328, 320 303, 365 291 C 406 280, 430 269, 470 260 C 505 250, 529 254, 560 265 C 605 281, 632 303, 686 314 C 722 321, 760 328, 800 333 Z" />
+        </svg>
       </div>
     </footer>
     </>
