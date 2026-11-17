@@ -110,3 +110,5 @@ a:focus-visible, button:focus-visible { outline: 2px solid #595959; outline-offs
 .desert-footer.is-visible .driving-car { animation-play-state: running; }
 @media (max-width: 750px) { .driving-car { animation-delay: -8s; } }
 .footer-reveal-marker { position: absolute; bottom: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
+/* Keep the rounded edge of the page visible even at the end of the scroll. */
+.desert-footer { height: min(clamp(250px, 33.333vw, 600px), max(0px, calc(100svh - 84px))); }
